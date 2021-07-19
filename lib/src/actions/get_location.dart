@@ -1,6 +1,11 @@
-import 'package:weather/src/models/location.dart';
+part of actions;
 
-class GetLocation {}
+class GetLocation {
+  @override
+  String toString() {
+    return 'GetLocation{}';
+  }
+}
 
 class GetLocationSuccessful {
   GetLocationSuccessful(this.location);
