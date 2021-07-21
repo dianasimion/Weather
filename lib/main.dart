@@ -7,7 +7,6 @@ import 'package:weather/src/actions/index.dart';
 import 'package:weather/src/data/location_api.dart';
 import 'package:weather/src/data/weather_api.dart';
 import 'package:weather/src/epics/app_epic.dart';
-import 'package:weather/src/middleware/middleware.dart';
 import 'package:weather/src/models/index.dart';
 import 'package:weather/src/presentation/home_page.dart';
 import 'package:weather/src/reducer/reducer.dart';
@@ -19,12 +18,11 @@ void main() {
   final Client client = Client();
   final LocationApi locationApi = LocationApi(apiUrl: locationApiUrl, client: client);
   final WeatherApi weatherApi = WeatherApi(apiUrl: weatherApiUrl, client: client);
-  final AppMiddleware appMiddleware = AppMiddleware(locationApi: locationApi, weatherApi: weatherApi);
   final AppEpic appEpic = AppEpic(locationApi: locationApi, weatherApi: weatherApi);
   final Store<AppState> store = Store<AppState>(reducer, initialState: AppState(), //
       middleware: <Middleware<AppState>>[EpicMiddleware<AppState>(appEpic.epic)]);
 
-  store.dispatch(GetLocation());
+  store.dispatch(const GetLocation());
   runApp(App(store: store));
 }
 

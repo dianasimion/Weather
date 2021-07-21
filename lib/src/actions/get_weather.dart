@@ -1,30 +1,11 @@
 part of actions;
 
-class GetWeather {
-  @override
-  String toString() {
-    return 'GetWeather{}';
-  }
-}
+@freezed
+class GetWeather with _$GetWeather implements AppAction {
+  const factory GetWeather() = GetWeatherStart;
 
-class GetWeatherSuccessful extends GetWeather {
-  GetWeatherSuccessful(this.weather);
+  const factory GetWeather.successful(Weather weather) = GetWeatherSuccessful;
 
-  final Weather weather;
-
-  @override
-  String toString() {
-    return 'GetWeatherSuccessful{weather: $weather}';
-  }
-}
-
-class GetWeatherError extends GetWeather {
-  GetWeatherError(this.error);
-
-  final dynamic error;
-
-  @override
-  String toString() {
-    return 'GetWeatherError{error: $error}';
-  }
+  @Implements(ErrorAction)
+  const factory GetWeather.error(Object error, StackTrace stackTrace) = GetWeatherError;
 }
