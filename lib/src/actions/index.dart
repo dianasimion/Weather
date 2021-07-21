@@ -8,7 +8,6 @@ part 'get_location.dart';
 part 'get_weather.dart';
 part 'index.freezed.dart';
 
-
 abstract class AppAction {}
 
 abstract class ErrorAction implements AppAction {

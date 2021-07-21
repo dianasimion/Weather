@@ -24,8 +24,7 @@ class _HomePageState extends State<HomePage> {
               child: WeatherContainer(
                 builder: (BuildContext context, Weather? weather) {
                   // final double temperatureCelsius = weather!.current.temperatureKelvin! - 274.15;
-                  if (weather == null)
-                    return const Text('ops');
+                  if (weather == null) return const Text('ops');
                   return Text(weather.current.temperatureKelvin.toString());
                 },
               ),

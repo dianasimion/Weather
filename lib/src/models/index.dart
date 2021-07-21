@@ -9,4 +9,3 @@ part 'current.dart';
 part 'location.dart';
 part 'weather.dart';
 part 'index.g.dart';
-
